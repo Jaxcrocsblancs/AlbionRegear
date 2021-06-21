@@ -19,12 +19,15 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(RegearRepository regearRepository) {
+    CommandLineRunner init(UserRepository userRepository, RegearRepository regearRepository) {
         return args -> {
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
+                User user = new User(name, name.toLowerCase() + "@domain.com");
+                userRepository.save(user);
                 Regear regear = new Regear(name, "https://albiononline.com/fr/killboard/kill/258103951", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/250px-Image_created_with_a_mobile_phone.png" );
                 regearRepository.save(regear);
             });
+            userRepository.findAll().forEach(System.out::println);
             regearRepository.findAll().forEach(System.out::println);
         };
     }

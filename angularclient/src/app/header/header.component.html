@@ -1,7 +1,8 @@
 <div class="navBar">
   <ul>
     <li routerLinkActive="active"><a routerLink="/regear/demand">Regear</a></li>
-    <li routerLinkActive="active"><a routerLink="/regear/list">Regear List</a></li>
-    <li style="float:right" routerLinkActive="active"><a routerLink="/auth">Login</a></li>
+    <li routerLinkActive="active"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/regear/list">Regear List</a></li>
+    <li style="float:right" routerLinkActive="active"><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+    <li style="float:right" routerLinkActive="active"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
   </ul>
 </div>

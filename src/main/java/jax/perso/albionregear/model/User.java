@@ -16,19 +16,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private final String pseudo;
-    private final String url;
-    private final String image;
+    private final String email;
 
-    public User(String pseudo, String url, String image) {
+    public User(String pseudo, String url) {
         this.pseudo = pseudo;
-        this.url = url;
-        this.image = image;
+        this.email = url;
     }
 
     public User() {
         this.pseudo = null;
-        this.url = null;
-        this.image = null;
+        this.email = null;
     }
 
     @Override
@@ -36,8 +33,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", pseudo='" + pseudo + '\'' +
-                ", url='" + url + '\'' +
-                ", image='" + image + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

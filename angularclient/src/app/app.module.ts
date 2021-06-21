@@ -12,7 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import { RegearFromComponent } from './regear/regear-from/regear-from.component';
 import { RegearListComponent } from './regear/regear-list/regear-list.component';
 import {RegearService} from "./regear/regear-service.service";
-import { AuthComponent } from './auth/auth.component';
+import {AuthenticationService} from "./auth/authentication.service";
+import {LoginComponent} from "./auth/login-component/login.component";
+import {LogoutComponent} from "./auth/logout-component/logout.component";
+import {AuthGuardService} from "./service/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { AuthComponent } from './auth/auth.component';
     HeaderComponent,
     RegearFromComponent,
     RegearListComponent,
-    AuthComponent
+    LoginComponent,
+    LogoutComponent
   ],
     imports: [
         BrowserModule,
@@ -32,7 +36,7 @@ import { AuthComponent } from './auth/auth.component';
         FormsModule,
         ReactiveFormsModule
     ],
-  providers: [UserService, RegearService],
+  providers: [UserService, RegearService,AuthenticationService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
