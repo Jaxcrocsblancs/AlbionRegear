@@ -1,0 +1,49 @@
+ <div class="card my-5">
+    <div class="card-body">
+      <div *ngIf="send" class="alert alert-success" role="alert">
+        Request successfully sent
+      </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" #regearFrom="ngForm">
+        <div class="form-group">
+          <label for="pseudo">Pseudo *</label>
+          <input type="text" [(ngModel)]="regear.pseudo"
+                 class="form-control"
+                 id="pseudo"
+                 name="pseudo"
+                 placeholder="Enter your pseudo"
+                 required
+                 ngModel
+                #pseudo="ngModel">
+        </div>
+
+        <div class="form-group">
+          <label for="URL">URL of killBoard *</label>
+          <input type="text" [(ngModel)]="regear.url"
+                 class="form-control"
+                 id="URL"
+                 name="URL"
+                 placeholder="Enter your URL of KillBoard"
+                 pattern='https:\/\/albiononline\.com\/fr\/killboard\/kill\/+[1-9]+[0-9]*$'
+                 required
+                 ngModel
+                #url="ngModel">
+        </div>
+
+
+        <div class="form-group">
+          <label for="image">Screen Death</label>
+          <input type="file" [(ngModel)]="regear.image"
+                 class="form-control"
+                 id="image"
+                 accept="image/png, image/jpeg"
+                 name="image"
+                 ngModel
+                #image="ngModel">
+        </div>
+
+
+        <button type="submit" [disabled]="!regearFrom.valid"
+                class="btn btn-info">Submit</button>
+      </form>
+    </div>
+ </div>

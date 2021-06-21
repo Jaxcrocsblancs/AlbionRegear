@@ -1,0 +1,33 @@
+<div class="card my-5" >
+  <div class="card-body" >
+    <table class="table table-bordered table-striped" >
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">pseudo</th>
+          <th scope="col">Killboard</th>
+          <th scope="col">image</th>
+          <th scope="col">Claim</th>
+        </tr>
+        </thead>
+
+      <tbody>
+        <tr *ngFor="let regear of regears" >
+          <td>{{ regear.id }}</td>
+          <td>{{ regear.pseudo }}</td>
+          <td>
+            <a href="{{ regear.url }}"><button class="btn-success">Link</button></a>
+          </td>
+          <td><img class="img-responsive" src="{{ regear.image }}" width="50" height="50"></td>
+          <div *ngIf="!regear.claim; then claim; else unClaim"></div>
+          <ng-template #claim>
+            <td><button class="btn-success">Claim</button></td>
+          </ng-template>
+          <ng-template #unClaim>
+            <td><button class="btn-danger">unClaim</button></td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
